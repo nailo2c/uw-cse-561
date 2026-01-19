@@ -1,47 +1,76 @@
-# Project 1: Mininet Topology
+# Project 1: Mininet Topology and Firewall
 
 ## Overview
-This project implements a basic Mininet topology consisting of a single switch connected to four hosts (Star topology).
+This project contains two parts exploring Mininet topologies and Software Defined Networking (SDN) controllers using POX.
 
 ## Setup Resources
 - **Project Page:** [UW CSE 561 Project 1](https://courses.cs.washington.edu/courses/csep561/26wi/projects/project1/)
 - **Mininet Environment:** [Setup Guide](https://gitlab.cs.washington.edu/561p-course-staff/mininet-environment)
 
-## Implementation Details
-The `part1.py` script defines the `part1_topo` class which builds the following network:
+---
+
+## Part 1: Basic Topology
+
+### Implementation Details
+The `part1.py` script defines the `part1_topo` class which builds a Star topology:
 - **Switch:** `s1`
 - **Hosts:** `h1`, `h2`, `h3`, `h4`
 - **Links:** Each host is directly connected to the switch `s1`.
 
-## Usage
+### Usage
 To start the topology and enter the Mininet CLI:
 
 ```bash
 sudo python3 part1.py
 ```
 
-## Sample Output
-
-Results from `iperf`, `dump`, and `pingall`:
+### Sample Output
+Results from `iperf` (bandwidth test) and `pingall` (reachability test):
 
 ```console
 mininet> iperf h1 h4
-*** Iperf: testing TCP bandwidth between h1 and h4 
 *** Results: ['70.1 Gbits/sec', '70.5 Gbits/sec']
 
-mininet> dump
-<Host h1: h1-eth0:10.0.0.1 pid=15554> 
-<Host h2: h2-eth0:10.0.0.2 pid=15559> 
-<Host h3: h3-eth0:10.0.0.3 pid=15561> 
-<Host h4: h4-eth0:10.0.0.4 pid=15563> 
-<OVSSwitch s1: lo:127.0.0.1,s1-eth1:None,s1-eth2:None,s1-eth3:None,s1-eth4:None pid=15568> 
-<Controller c0: 127.0.0.1:6653 pid=15547> 
-
 mininet> pingall
-*** Ping: testing ping reachability
-h1 -> h2 h3 h4 
-h2 -> h1 h3 h4 
-h3 -> h1 h2 h4 
-h4 -> h1 h2 h3 
 *** Results: 0% dropped (12/12 received)
 ```
+
+---
+
+## Part 2: Firewall Controller
+
+### Implementation Details
+This part introduces a **Remote Controller** implementing a firewall logic alongside a specific network topology.
+
+#### Topology (`part2.py`)
+- **Switch:** `s1` (Connected to a RemoteController)
+- **Hosts:**
+  - `h1`: `10.0.1.2/24` (MAC: `00:00:00:00:00:01`)
+  - `h2`: `10.0.0.2/24` (MAC: `00:00:00:00:00:02`)
+  - `h3`: `10.0.0.3/24` (MAC: `00:00:00:00:00:03`)
+  - `h4`: `10.0.1.3/24` (MAC: `00:00:00:00:00:04`)
+
+#### Controller Logic (`a1part2controller.py`)
+The controller (`Firewall` class) installs OpenFlow rules to manage traffic:
+1.  **Allow ICMP:** Priority 1000 (Action: Flood)
+2.  **Allow ARP:** Priority 1000 (Action: Flood)
+3.  **Drop IPv4:** Priority 10 (Action: Drop) - Drops all other IPv4 traffic (e.g., TCP/UDP).
+
+### Usage
+
+1.  **Start the Controller:**
+    Open a terminal and run the POX controller:
+    ```bash
+    # Adjust the path to pox.py as needed
+    sudo ~/pox/pox.py log.level --DEBUG project1.a1part2controller
+    ```
+
+2.  **Start the Topology:**
+    In a separate terminal, start the Mininet topology:
+    ```bash
+    sudo python3 part2.py
+    ```
+
+### Expected Behavior
+- **Ping (ICMP):** Should succeed between all hosts.
+- **Iperf (TCP):** Should fail (blocked by the drop rule).
