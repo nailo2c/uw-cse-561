@@ -1,3 +1,14 @@
+# Part 2 of UWCSE's Project 3
+#
+# based on Lab 4 from UCSC's Networking Class
+# which is based on of_tutorial by James McCauley
+
+from pox.core import core
+import pox.openflow.libopenflow_01 as of
+
+log = core.getLogger()
+
+
 class Firewall(object):
     """
     A Firewall object is created for each switch that connects.

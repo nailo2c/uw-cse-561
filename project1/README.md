@@ -12,7 +12,7 @@ This project contains two parts exploring Mininet topologies and Software Define
 ## Part 1: Basic Topology
 
 ### Implementation Details
-The `part1.py` script defines the `part1_topo` class which builds a Star topology:
+The `topos/part1.py` script defines the `part1_topo` class which builds a Star topology:
 - **Switch:** `s1`
 - **Hosts:** `h1`, `h2`, `h3`, `h4`
 - **Links:** Each host is directly connected to the switch `s1`.
@@ -21,7 +21,7 @@ The `part1.py` script defines the `part1_topo` class which builds a Star topolog
 To start the topology and enter the Mininet CLI:
 
 ```bash
-sudo python3 part1.py
+sudo python3 topos/part1.py
 ```
 
 ### Sample Output
@@ -42,7 +42,7 @@ mininet> pingall
 ### Implementation Details
 This part introduces a **Remote Controller** implementing a firewall logic alongside a specific network topology.
 
-#### Topology (`part2.py`)
+#### Topology (`topos/part2.py`)
 - **Switch:** `s1` (Connected to a RemoteController)
 - **Hosts:**
   - `h1`: `10.0.1.2/24` (MAC: `00:00:00:00:00:01`)
@@ -50,7 +50,7 @@ This part introduces a **Remote Controller** implementing a firewall logic along
   - `h3`: `10.0.0.3/24` (MAC: `00:00:00:00:00:03`)
   - `h4`: `10.0.1.3/24` (MAC: `00:00:00:00:00:04`)
 
-#### Controller Logic (`a1part2controller.py`)
+#### Controller Logic (`pox/a1part2controller.py`)
 The controller (`Firewall` class) installs OpenFlow rules to manage traffic:
 1.  **Allow ICMP:** Priority 1000 (Action: Flood)
 2.  **Allow ARP:** Priority 1000 (Action: Flood)
@@ -68,7 +68,7 @@ The controller (`Firewall` class) installs OpenFlow rules to manage traffic:
 2.  **Start the Topology:**
     In a separate terminal, start the Mininet topology:
     ```bash
-    sudo python3 part2.py
+    sudo python3 topos/part2.py
     ```
 
 ### Expected Behavior
