@@ -1,4 +1,4 @@
-# Part 2 of UWCSE's Project 3
+# Extension 1 of UWCSE's Project 1
 #
 # based on Lab 4 from UCSC's Networking Class
 # which is based on of_tutorial by James McCauley
