@@ -22,6 +22,7 @@ class ext2_topo(Topo):
         self.addLink(h3, s1)
         self.addLink(h4, s2)
         self.addLink(s1, s2)
+        self.addLink(s1, s2) # redundant paths between s1 and s2
         self.addLink(s1, s3)
         self.addLink(s2, s3)
 

@@ -74,3 +74,50 @@ The controller (`Firewall` class) installs OpenFlow rules to manage traffic:
 ### Expected Behavior
 - **Ping (ICMP):** Should succeed between all hosts.
 - **Iperf (TCP):** Should fail (blocked by the drop rule).
+
+---
+
+## Extension 1: Learning Switch (MAC Learning)
+
+### Implementation Details
+The controller in `pox/a1ext1controller.py` implements a basic learning switch:
+- **MAC learning:** Records `src MAC -> in_port` on each `PacketIn`.
+- **Known destination:** Installs a unicast flow (priority 1000) and forwards out the learned port.
+- **Unknown destination:** Floods the packet.
+
+### Usage
+1.  **Start the Controller:**
+    ```bash
+    sudo ~/pox/pox.py log.level --DEBUG project1.a1ext1controller
+    ```
+2.  **Start a Topology (single-switch):**
+    ```bash
+    # Example
+    sudo python3 topos/part2.py
+    ```
+
+### Expected Behavior
+- First packet to an unknown destination is flooded; subsequent traffic is unicast via installed flows.
+- `pingall` should succeed.
+
+---
+
+## Extension 2: Spanning Tree + Loop-Free Flooding
+
+### Implementation Details
+- **Topology:** `topos/ext2.py` defines three switches (`s1`, `s2`, `s3`) with redundant inter-switch links plus four hosts.
+- **Controller:** `pox/a1ext2controller.py` uses `openflow.discovery` to learn links, computes a spanning tree (BFS from lowest DPID), and installs high-priority drop rules on non-tree inter-switch ports. It also avoids flooding LLDP.
+
+### Usage
+1.  **Start the Controller:**
+    ```bash
+    sudo ~/pox/pox.py log.level --DEBUG project1.a1ext2controller
+    ```
+2.  **Start the Topology:**
+    ```bash
+    sudo python3 topos/ext2.py
+    ```
+
+### Expected Behavior
+- End hosts can reach each other (e.g., `pingall` succeeds).
+- Redundant inter-switch links are blocked to prevent loops/broadcast storms.
