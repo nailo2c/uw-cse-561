@@ -57,24 +57,92 @@ class Part3Controller(object):
             exit(1)
 
     def s1_setup(self):
-        # put switch 1 rules here
-        pass
+        # Allow all traffic to h10
+        ip_allow = of.ofp_flow_mod()
+        ip_allow.priority = 900
+        ip_allow.match.dl_type = 0x0800  # IPv4
+        ip_allow.actions.append(of.ofp_action_output(port=of.OFPP_FLOOD))
+        self.connection.send(ip_allow)
 
     def s2_setup(self):
-        # put switch 2 rules here
-        pass
+        # Allow all traffic to h20
+        ip_allow = of.ofp_flow_mod()
+        ip_allow.priority = 900
+        ip_allow.match.dl_type = 0x0800  # IPv4
+        ip_allow.actions.append(of.ofp_action_output(port=of.OFPP_FLOOD))
+        self.connection.send(ip_allow)
 
     def s3_setup(self):
-        # put switch 3 rules here
-        pass
+        # Allow all traffic to h30
+        ip_allow = of.ofp_flow_mod()
+        ip_allow.priority = 900
+        ip_allow.match.dl_type = 0x0800  # IPv4
+        ip_allow.actions.append(of.ofp_action_output(port=of.OFPP_FLOOD))
+        self.connection.send(ip_allow)
 
     def cores21_setup(self):
-        # put core switch rules here
-        pass
+        # Block all ICMP traffic from hnotrust
+        icmp_drop = of.ofp_flow_mod()
+        icmp_drop.priority = 1000
+        icmp_drop.match.dl_type = 0x0800  # IPv4
+        icmp_drop.match.nw_proto = 1  # Memo: ICMP=1, TCP=6, UDP=17
+        icmp_drop.match.nw_src = IPAddr("172.16.10.100") # hnotrust's IP
+        self.connection.send(icmp_drop)
+
+        # If distination ip is 10.0.1.X, send to s1
+        s1_route = of.ofp_flow_mod()
+        s1_route.priority = 900
+        s1_route.match.dl_type = 0x0800  # IPv4
+        s1_route.match.nw_dst = IPAddr("10.0.1.10")
+        s1_route.actions.append(of.ofp_action_output(port=1))
+        self.connection.send(s1_route)
+
+        # If distination ip is 10.0.2.X, send to s2
+        s2_route = of.ofp_flow_mod()
+        s2_route.priority = 900
+        s2_route.match.dl_type = 0x0800  # IPv4
+        s2_route.match.nw_dst = IPAddr("10.0.2.20")
+        s2_route.actions.append(of.ofp_action_output(port=2))
+        self.connection.send(s2_route)
+
+        # If distination ip is 10.0.3.X, send to s3
+        s3_route = of.ofp_flow_mod()
+        s3_route.priority = 900
+        s3_route.match.dl_type = 0x0800  # IPv4
+        s3_route.match.nw_dst = IPAddr("10.0.3.30")
+        s3_route.actions.append(of.ofp_action_output(port=3))
+        self.connection.send(s3_route)
+
+        # If distination ip is 10.0.4.X, send to serv1
+        serv1_route = of.ofp_flow_mod()
+        serv1_route.priority = 900
+        serv1_route.match.dl_type = 0x0800  # IPv4
+        serv1_route.match.nw_dst = IPAddr("10.0.4.10")
+        serv1_route.actions.append(of.ofp_action_output(port=4))
+        self.connection.send(serv1_route)
+
+        # If distination ip is 172.16.10.X, send to hnotrust
+        hnotrust_route = of.ofp_flow_mod()
+        hnotrust_route.priority = 900
+        hnotrust_route.match.dl_type = 0x0800  # IPv4
+        hnotrust_route.match.nw_dst = IPAddr("172.16.10.100")
+        hnotrust_route.actions.append(of.ofp_action_output(port=5))
+        self.connection.send(hnotrust_route)
 
     def dcs31_setup(self):
-        # put datacenter switch rules here
-        pass
+        # Block all traffic from hnotrust
+        ip_drop = of.ofp_flow_mod()
+        ip_drop.priority = 1000
+        ip_drop.match.dl_type = 0x0800  # IPv4
+        ip_drop.match.nw_src = IPAddr("172.16.10.100") # hnotrust's IP
+        self.connection.send(ip_drop)
+
+        # Allow all other traffic to serv1
+        ip_allow = of.ofp_flow_mod()
+        ip_allow.priority = 900
+        ip_allow.match.dl_type = 0x0800  # IPv4
+        ip_allow.actions.append(of.ofp_action_output(port=of.OFPP_FLOOD))
+        self.connection.send(ip_allow)
 
     # used in part 4 to handle individual ARP packets
     # not needed for part 3 (USE RULES!)
