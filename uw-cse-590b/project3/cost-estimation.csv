@@ -1,0 +1,23 @@
+Category,AWS Service,Component Role,Metric/Assumption,Estimated Monthly Cost (USD),Notes
+Compute,AWS Fargate,"Order API (2-10 instances)",Avg 4 instances (0.5 vCPU; 1GB RAM) running 24/7,"$60.00","Scales up during spikes"
+Compute,AWS Fargate,"Inventory Worker (2-20 instances)",Avg 4 instances (0.5 vCPU; 1GB RAM) running 24/7,"$60.00","High scaling volatility based on SQS queue depth"
+Compute,AWS Lambda,"Notification Worker",1M invocations/month (avg 200ms duration; 512MB RAM),"$0.00","Covered by AWS Free Tier initially; highly cost-efficient"
+Compute,AWS Step Functions,"Saga Orchestrator",1M state transitions/month,"$25.00","Standard workflow pricing"
+Storage,Amazon DynamoDB,"Orders & Inventory Database","100GB storage; On-Demand capacity (avg 1000 WCU/s; 500 RCU/s)","$150.00","Cost highly dependent on exact traffic profile"
+Storage,Amazon S3,"Log Archiving & Data Lake",500GB Standard Storage,"$11.50","Includes PUT/GET requests"
+Database/Cache,Amazon ElastiCache,"Redis Cache (Catalog)",2 nodes (cache.t3.medium) in Multi-AZ,"$68.00","Provides low-latency reads; protects DynamoDB capacity"
+Messaging,Amazon SQS,"Order Queue & DLQ",5M requests/month,"$2.00","Standard queue pricing; very inexpensive"
+Messaging,Amazon SNS,"Event Bus",2M requests/month,"$1.00","Used to fan-out events to Workers"
+Networking,Amazon API Gateway,"REST API Ingress",1M API Calls/month,"$3.50","First 1M calls are cheap; subsequent usage scales linearly"
+Networking,NAT Gateway,"Outbound Internet for Workers",1 NAT Gateway + 100GB Data Processed,"$37.00","Fixed hourly cost + data processing fee"
+Networking,Data Transfer,"Data Egress (Out to Internet)",100GB Outbound Data,"$9.00","$0.09 per GB over 100GB"
+Observability,Amazon CloudWatch,"Logs & Metrics",50GB Ingestion + Dashboards,"$25.00","Can get expensive if log verbosity is not managed"
+Security,AWS Secrets Manager,"Secret Storage",3 Secrets + 100K API calls/month,"$1.20","Flat fee per secret + usage"
+,,,,
+TOTAL ESTIMATE,,,,,~ $453.20,
+,,,,
+Performance Model (Scaling Behavior under Load),,,,
+Scenario,Incoming RPS,Bottleneck Component,Mitigation Strategy,,
+Normal Traffic,10-50,None,"System operates at baseline capacity; minimal queueing.",
+High Traffic (Sale),500-1000,DynamoDB Write Capacity (Throttling),"DynamoDB On-Demand absorbs spike; SQS temporarily queues orders; Fargate scales up.",
+Extreme Spike,5000+,API Gateway / Account Limits,"SQS queue depth grows significantly; implement API Rate Limiting to prevent complete account resource exhaustion.",
