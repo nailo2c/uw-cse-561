@@ -1,0 +1,219 @@
+\documentclass{article}
+\usepackage{import}
+\subimport*{./}{macro}
+\usepackage[normalem]{ulem}
+
+\setlength\parindent{0px}
+
+\begin{document}
+\setcounter{aprob}{0}
+\setcounter{bprob}{0}
+\title{Homework \#0}
+\author{
+    \normalsize{CSEP 546: Machine Learning}\\
+    \normalsize{Professor Jamie Morgenstern}\\
+    \normalsize{Due: \textbf{\sout{Wednesday April 8, 2026 11:59pm} \; Updated: Thursday April 9, 2026 6:25pm (just before class)}}\\
+    \normalsize{38 points}
+}
+\date{{}}
+\maketitle
+
+\noindent Please review all homework guidance posted on the website before submitting to Gradescope. Reminders:
+\begin{itemize}
+    \item All code must be written in Python, and all written work must be typeset (e.g. \LaTeX{}).
+    \item Make sure to read the ``What to Submit'' section following each question and include all items.
+    \item Please provide succinct answers and supporting reasoning for each question. Similarly, when discussing experimental results, concisely create tables and/or figures when appropriate to organize the experimental results. All explanations, tables, and figures for any particular part of a question must be grouped together.
+    \item For every problem involving generating plots, please include the plots as part of your PDF submission.
+    \item When submitting to Gradescope, please link each question from the homework in Gradescope to the location of its answer in your homework PDF. Failure to do so may result in deductions of up to 10\% of the value of each question not properly linked. For instructions, see \url{https://www.gradescope.com/get_started#student-submission}.
+    \item \color{red}{\textbf{If you used AI tools on any part of this assignment, you must turn in a complete transcript of all conversations with AI systems as part of your submission. Failure to do so is a violation of the collaboration policy.}}
+    \item \color{red}{Make sure to submit your code by running \texttt{inv submit} from within the \texttt{csep546} uv environment and submitting the zip folder created. Submissions that don't follow this procedure will fail the autograder on Gradescope. After the due date, we will not accept resubmissions. \textbf{We suggest you wait for the autograder on Gradescope to complete and display your score before regarding the coding portion of assignments complete.}}
+\end{itemize}
+
+Not adhering to these reminders may result in point deductions. \\
+
+\textbf{Important:} By turning in this assignment (and all that follow), you acknowledge that you have read and understood the collaboration policy with humans and AI assistants alike: \url{https://courses.cs.washington.edu/courses/csep546/26sp/assignments/}. Any questions about the policy should be raised at least 24 hours before the assignment is due. There are no warnings or second chances. If we suspect you have violated the collaboration policy, we will report it to the college of engineering who will complete an investigation.
+
+
+
+
+% Start of Problems:
+
+\section*{Quick note about macro.tex}
+The \texttt{macro.tex} file provided on the course website provides the definitions for different macros that are referenced in the CSEP 546 homework \LaTeX{} files. For example, it includes the new command that makes the point values for problems pink and italicized on the homework documents, and also includes commands for things like set notation and writing matrices.\\
+
+While not required to use the provided homework \LaTeX{} files, if you would like to compile them, place the homework file in a directory and change the path to the macro file on line 3 (e.g. if the macro file is in the same directory as the homework file, the path should be \verb_\subimport*{./}{macro}_). You can also choose to directly copy the contents of the macro file into your \LaTeX{} code.
+\clearpage{}
+
+\section*{Probability and Statistics}
+\begin{aprob}
+    \points{2} (From Murphy Exercise 2.4.) 
+    After your yearly checkup, the doctor has bad news and good news. 
+    The bad news is that you tested positive for a serious disease, and that the test is 99\% accurate (i.e., the probability of testing positive given that you have the disease is 0.99, as is the probability of testing negative given that you don't have the disease).
+    The good news is that this is a rare disease, striking only one in 10,000 people.
+    What are the chances that you actually have the disease?
+    
+    \subsubsection*{What to Submit:}
+    \begin{itemize}
+        \item Final Answer
+        \item Corresponding Calculations
+    \end{itemize}
+\end{aprob}
+
+\begin{aprob}
+    Let $\mathbf{X} = \begin{bmatrix}
+        X_1 & \cdots & X_n
+    \end{bmatrix}^\top$ be a random vector with mean vector $\boldsymbol{\mu} \in \R^n$ and covariance matrix $\boldsymbol\Sigma \in \R^{n \times n}$. That is, for each $i \in [n]$, $\E {X_i} =\boldsymbol\mu_i$, and for each $i,j \in [n]$, $\Cov{X_i}{X_j} = \boldsymbol\Sigma_{i,j}$.
+    \begin{enumerate}
+        \item \points{2} Let $i \in [n]$. Find an expression for $\E{X_i^2}$ in terms of only $\boldsymbol\mu$ and $\boldsymbol\Sigma$.
+        \item \points{2} Recall that the trace of a square matrix is the sum of its diagonal entries. Show that $\E{\mathbf{X}^\top \mathbf{X}} = \mathrm{tr}(\boldsymbol\Sigma) + \boldsymbol\mu^\top\boldsymbol\mu$. \\
+    \end{enumerate}
+
+    \subsubsection*{What to Submit:}
+    \begin{itemize}
+        \item \textbf{Part a:} Expression for $\E{X_i^2}$ and corresponding calculations
+        \item \textbf{Part b:} Proof
+    \end{itemize}
+\end{aprob}
+
+\begin{aprob}
+    Let $X_1, X_2, ..., X_n \sim \mathcal{N}(\mu, \sigma^2)$ be i.i.d. random variables. Compute the following:
+    \begin{enumerate}
+        \item \points{1} $a\in{\mathbb R},b\in{\mathbb R}$ such that $aX_1+b \sim \mathcal{N}(0,1)$.
+        \item \points{2} Using $a$ and $b$ from the previous part, $\E{|aX_1+b|}$.\\ \textbf{Hint:} You may need to use u-substitution.
+        \item \points{1} $\E{X_1 + 2X_2}, \Var{X_1 + 2X_2}$.
+        \item \points{2} Setting $\widehat{\mu}_n = \frac{1}{n} \sum_{i=1}^n X_i$, the mean and variance of $\sqrt{n}(\widehat{\mu}_n - \mu)$.
+    \end{enumerate}
+
+    \subsubsection*{What to Submit:}
+    \begin{itemize}
+        \item \textbf{Part a:} $a$, $b$
+        \item \textbf{Part b:} $\E{|aX_1+b|}$
+        \item \textbf{Part c:} $\E{X_1 + 2X_2}$, $\Var{X_1 + 2X_2}$
+        \item \textbf{Part d:} $\E{\sqrt{n}(\widehat{\mu}_n - \mu)}$, $\Var{\sqrt{n}(\widehat{\mu}_n - \mu)}$
+        \item \textbf{Parts a-d} Corresponding calculations
+    \end{itemize}
+\end{aprob}
+
+
+
+\section*{Linear Algebra and Vector Calculus}
+\begin{aprob}
+    Let $\mathbf{A} = \begin{bmatrix}
+            0 & 1 & -1 & -2 \\
+            1 & 1 & 1 & 1 \\
+            1 & -1 & 1 & 2
+        \end{bmatrix}$ and $\mathbf{B} = \begin{bmatrix}
+            -1 & 2 & 0 \\
+            -2 & 1 & 2 \\
+            2 & 0 & -3 \\
+            -1 & -1 & 2
+        \end{bmatrix}$.
+    \begin{enumerate} 
+        \item\points{1} Compute $\mathbf{AB}$.
+        \item\points{2} What is the rank of $\mathbf{AB}$? Use this to determine the rank of both $\mathbf{A}$ and $\mathbf{B}$.
+        \item\points{1} Find a matrix $\mathbf{C}$ such that $\mathbf{ABC} = \mathbf{I}$, or explain why such a matrix does not exist.
+        \item\points{1} Let $b = \begin{bmatrix}
+            1 &
+            1 &
+            1
+        \end{bmatrix}^\top$. What is the solution to the linear system $\mathbf{A} \mathbf{B} x = b$?
+    \end{enumerate}
+    
+    \subsubsection*{What to Submit:}
+    \begin{itemize}
+        \item \textbf{Parts a-d:} Solution and corresponding calculations
+    \end{itemize}
+\end{aprob}
+
+
+\begin{aprob} \label{prob:sumvec}
+    For possibly non-symmetric $\mat{A}, \mat{B} \in \R^{n \times n}$ and $c \in \R$, let $f(x, y) = x^\top \mat{A} x + y^\top \mat{B} x + c$. Define
+    $$\nabla_z f(x,y) = \begin{bmatrix}
+        \pderiv{f}{z_1}(x,y) & \pderiv{f}{z_2}(x,y) & \dots & \pderiv{f}{z_n}(x,y)
+    \end{bmatrix}^\top \; \in{\mathbb R}^{n}\;.$$  
+
+    \textbf{Note:} If you are unfamiliar with gradients, you may find the resources available on the course website useful. Section 4 of Zico Kolter and Chuong Do's \href{http://www.cs.cmu.edu/~zkolter/course/15-884/linalg-review.pdf}{Linear Algebra Review and Reference} may be particularly helpful.\\
+    
+    \begin{enumerate}
+        \item \points{2} Explicitly write out the function $f(x, y)$ in terms of the components $A_{i,j}$ and $B_{i,j}$ using appropriate summations over the indices.
+        \item \points{2} What is $\nabla_x f(x,y)$ and $\nabla_y f(x,y)$  in terms of summations over indices?
+        \item \points{2} What is $\nabla_x f(x,y)$ and $\nabla_y f(x,y)$ in vector notation?
+    \end{enumerate}
+    \subsubsection*{What to Submit:}
+    \begin{itemize}
+        \item \textbf{Part a:} Explicit formula for $f(x, y)$
+        \item \textbf{Parts b:} Summation form and corresponding calculations. Summation form includes writing out what each component of the resultant vector is, where each component is expressed as a summation. Intermediate components may be indicated by ellipses, like in the equation given in the problem description.
+        \item \textbf{Part c:} Vector form and corresponding calculations. Vector form includes writing the final answer only in terms of products, sums (or differences), and/or transposes of the input matrices and vectors.
+    \end{itemize}
+\end{aprob}
+
+\begin{aprob}\label{prob:matrixtype}
+    Show the following:
+    \begin{enumerate}
+        \item \points{2} Let $g\colon \R\setminus\{0\}\rightarrow \R$ and $v, w \in \R^n$ such that $v_i \neq 0$ and $g(v_i) = w_i$ for $i\in[n]$. Find an expression for $g$ such that $\diag(v)^{-1} = \diag(w)$.
+        \item \points{2} Let $\mat{A} \in \R^{n \times n}$ be orthonormal and $x \in \R^n$. 
+        An orthonormal matrix is a square matrix whose columns and rows are orthonormal vectors, such that $ \mat{A}\mat{A}^\top = \mat{A}^\top \mat{A} = {\bf I}$ where ${\bf I}$ is the identity matrix. 
+        Show that $||\mat{A}x||_2^2 = ||x||_2^2$.
+        \item \points{2} Let $\mat{B} \in \R^{n \times n}$ be invertible and symmetric. A symmetric matrix is a square matrix satisfying $\mat{B}=\mat{B}^\top$. Show that $\mat{B}^{-1}$ is also symmetric.
+        \item \points{2} Let $\mat{C} \in \R^{n \times n}$ be positive semi-definite (PSD). A positive semi-definite matrix is a symmetric matrix satisfying $x^\top \mat{C} x \geq 0$ for any vector $x\in{\mathbb R}^n$. Show that its eigenvalues are non-negative.
+    \end{enumerate}
+    \subsubsection*{What to Submit:}
+    \begin{itemize}
+        \item \textbf{Part a:} Explicit formula for $g$
+        \item \textbf{Parts a-d:} Proof
+    \end{itemize}
+\end{aprob}
+
+
+\section*{Programming}
+\textbf{These problems are available in a .zip file}, with some starter code. All coding questions in this class will have starter code.
+\textbf{Before attempting these problems, you will need to set up a uv environment that you will use for every assignment in the course. Unzip the HW0-A.zip file and read the instructions in the README file to get started.}
+
+\begin{aprob} \label{prob:sumvecimp}
+    For $\nabla_x f(x,y)$ as solved for in Problem \ref{prob:sumvec}:
+    \begin{enumerate}
+        \item \points{1} \sloppy Using native Python, implement \verb|vanilla_solution| using your \verb|vanilla_matmul| and \verb|vanilla_transpose| functions.
+        \item \points{1} Now implement \verb|numpy_version| using NumPy functions.
+        \item \points{1} Report the difference in wall-clock time for parts a-b, and discuss reasons for the observed difference.
+    \end{enumerate}
+    
+    \subsubsection*{What to Submit:}
+    \begin{itemize}
+        \item \textbf{Part c:} Plot that shows the difference in wall-clock time for parts a-b
+        \item \textbf{Part c:} Explanation for the difference (1-2 sentences)
+        \item \textbf{Code} on Gradescope through coding submission
+    \end{itemize}
+\end{aprob}
+
+\begin{aprob}
+    Two random variables $X$ and $Y$ have equal  distributions if their CDFs, $F_X$ and $F_Y$, respectively, are equal, i.e. for all $x$, $ \abs{F_X(x) - F_Y(x)} = 0$. 
+    The central limit theorem says that the sum of $k$ independent, zero-mean, variance $1/k$ random variables converges to a (standard) Normal distribution as $k$ tends to infinity.  
+    We will study this phenomenon empirically (you will use the Python packages NumPy and Matplotlib).  Each of the following subproblems includes a description of how the plots were generated; these have been coded for you. The code is available in the .zip file. In this problem, you will add to our implementation to explore {\bf matplotlib} library, and how the solution depends on $n$ and $k$.
+    
+    \begin{enumerate}
+    \item \points{2}  \label{prob:cltcdf:gaussian} For $i=1,\ldots,n$ let $Z_i \sim \mathcal{N}(0,1)$. Let $x\mapsto F(x)$ denote the true CDF from which each $Z_i$ is drawn (i.e.,  Gaussian). Define  $\widehat{F}_n(x) = \frac{1}{n} \sum_{i=1}^n \1\{ Z_i \leq x\}$ for $x\in\R$ and we will choose $n$ large enough such that, for all $x \in \R$,
+    \[
+        \sqrt{\E{\round{\widehat{F}_n(x)-F(x)}^2 }} \leq 0.0025\ .
+    \]
+    Plot $x\mapsto \widehat{F}_n(x)$ for $x$ ranging from $-3$ to $3$.
+    
+    \item  \points{2}  Define $Y^{(k)} = \frac{1}{\sqrt{k}} \sum_{i=1}^k B_i$ where each $B_i$ is equal to $-1$ and $1$ with equal probability and the $B_i$'s are independent.
+    We know that each $\frac{1}{\sqrt{k}} B_i$ is zero-mean and has variance $1/k$. \label{prob:cltcdf:k} For each $k \in \set{1, 8, 64, 512}$ we will generate $n$ (same as in part a) independent copies $Y^{(k)}$ and plot their empirical CDF on the same plot as part~\ref{prob:cltcdf:gaussian}.
+    \end{enumerate}
+    Be sure to always label your axes. 
+    Your plot should look something like the following (up to styling) (Tip: checkout \texttt{seaborn} for instantly better looking plots.)
+
+    \begin{center}
+        \includegraphics[width=4in]{./full.png}
+    \end{center}
+    
+    \subsubsection*{What to Submit:}
+    \begin{itemize}
+        \item \textbf{Part~\ref{prob:cltcdf:gaussian}:} Value for $n$ (You can simply print the value determined by the code provided for you).
+        \textbf{Part~\ref{prob:cltcdf:k}:} In 1-2 sentences: How does the empirical CDF change with $k$?
+        \item \textbf{Parts~\ref{prob:cltcdf:gaussian} and~\ref{prob:cltcdf:k}:} Plot of $x\mapsto \widehat{F}_n(x)$ for $x \in [-3, 3]$
+        \item \textbf{Code} on Gradescope through coding submission
+    \end{itemize}
+\end{aprob}
+
+\end{document}%
