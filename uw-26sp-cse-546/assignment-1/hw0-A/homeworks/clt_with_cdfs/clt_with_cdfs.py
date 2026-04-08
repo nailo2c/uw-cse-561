@@ -30,8 +30,10 @@ def plot_settings():
     #   - Add label "Observations" on x axis
     #   - Add label "Probability" on y axis
     #   - Render the plot with plt.show() call
-
-    raise NotImplementedError("Your Code Goes Here")
+    plt.xlim(-3, 3)
+    plt.xlabel("Observations")
+    plt.ylabel("Probability")
+    plt.show()
 
 
 if __name__ == "__main__":

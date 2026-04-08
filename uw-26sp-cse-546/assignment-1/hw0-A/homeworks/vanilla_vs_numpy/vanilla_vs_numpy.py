@@ -72,7 +72,16 @@ def vanilla_solution(x: Vector, y: Vector, A: Matrix, B: Matrix) -> Vector:
         - In this context (and documentation of two functions above) vector means list of floats,
             and matrix means list of lists of floats
     """
-    raise NotImplementedError("Your Code Goes Here")
+    A_T = vanilla_transpose(A)
+    A_sum = [[None for _ in range(len(A[i]))] for i in range(len(A))]
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            A_sum[i][j] = A[i][j] + A_T[i][j]
+    A_x  = vanilla_matmul(A_sum, x)
+    B_y = vanilla_matmul(vanilla_transpose(B), y)
+    solution = [a + b for a, b in zip(A_x, B_y)]
+
+    return solution
 
 
 @problem.tag("hw0-A")
@@ -95,7 +104,8 @@ def numpy_solution(
         - Make use of numpy docs: https://numpy.org/doc/
             You will use this link a lot throughout quarter, so it might be a good idea to bookmark it!
     """
-    raise NotImplementedError("Your Code Goes Here")
+    solution = (A + A.T) @ x + B.T @ y
+    return solution
 
 
 def main():
@@ -140,6 +150,7 @@ def main():
     plt.xlabel("n")
     plt.ylabel("Time (ns)")
     plt.legend()
+    plt.savefig('vanilla_vs_numpy.png')
     plt.show()
 
 

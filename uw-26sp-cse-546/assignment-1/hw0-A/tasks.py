@@ -53,6 +53,7 @@ def submit(_):
     """
     Generates a .zip file to be uploaded to gradescope for code submission.
     """
+    import os
     import shutil
     from pathlib import Path
     import datetime
@@ -64,7 +65,7 @@ def submit(_):
 
     # Cleanup previous submissions attempts
     if tmp_dir_path.exists():
-        robust_rmtree(tmp_dir_path)
+        shutil.rmtree(tmp_dir_path)
     if zip_file_path.exists():
         os.remove(zip_file_path)
 
@@ -75,5 +76,5 @@ def submit(_):
     shutil.make_archive(zip_file_path, "zip", tmp_dir_path)
 
     # Cleanup
-    robust_rmtree(tmp_dir_path)
+    shutil.rmtree(tmp_dir_path)
 

@@ -1,18 +1,22 @@
-\documentclass{article}
+% \documentclass{article}
+\documentclass[fleqn]{article} 
+\usepackage{amsmath}
+\usepackage{enumitem}
 \usepackage{import}
 \subimport*{./}{macro}
 
-\setlength\parindent{0px}
+\setlength\parindent{20px}
+\setlength{\mathindent}{20pt}
 
 \begin{document}
-\title{Homework \#0 - Aaron's Solutions}
-\author{Aaron Chen}
+\title{Homework \#0}
+\author{Aaron Chen / aaronyc}
 \date{}
 \maketitle
 
 % ------ setting ------
 
-\subsection*{A1}
+\subsection*{A1.}
 
 \[
 TP = 0.99 \cdot \frac{1}{10{,}000}
@@ -22,14 +26,251 @@ TP = 0.99 \cdot \frac{1}{10{,}000}
 FP = 0.01 \cdot \frac{9{,}999}{10{,}000}
 \]
 
-Therefore, the probability that you actually have the disease given a positive test result is
-
-\[
+\begin{align*}
 \frac{TP}{TP + FP}
-= \frac{0.99 \cdot \frac{1}{10{,}000}}
-{0.99 \cdot \frac{1}{10{,}000} + 0.01 \cdot \frac{9{,}999}{10{,}000}}
-= \frac{1}{102}.
+&= \frac{0.99 \cdot \frac{1}{10{,}000}}
+{0.99 \cdot \frac{1}{10{,}000} + 0.01 \cdot \frac{9{,}999}{10{,}000}} \\
+&= \frac{1}{102}
+\end{align*}
+
+The chances that you actually have disease is $\frac{1}{102}$.
+
+% ---------------------
+
+\subsection*{A2.}
+
+\begin{enumerate}[label=(\alph*)]
+\item
+\begin{align*}
+& 1. \Var{X_i} = \E{X_i^2} - (\E{X_i})^2 \\
+& 2. \Cov{X_i}{X_i} = \Var{X_i} = \Sigma_{i,i} \\
+& \Rightarrow \E{X_i^2} = \Sigma_{i,i} + \mu_i^2
+\end{align*}
+
+\item
+\begin{align*}
+\E{X^\top X} &= \E{X_1^2 + X_2^2 + \cdots + X_n^2} \\
+             &= \E{\sum_{i=1}^{n} X_i^2} \\
+             &= \sum_{i=1}^{n}\E{X_i^2} \\
+             &= \sum_{i=1}^{n}(\Sigma_{i,i} + \mu_i^2) \\
+             &= \sum_{i=1}^{n}\Sigma_{i,i} + \sum_{i=1}^{n}\mu_i^2 \\
+             &= \operatorname{tr}(\Sigma) + \mu^\top \mu
+\end{align*}
+\end{enumerate}
+
+% ---------------------
+
+\subsection*{A3.}
+
+\begin{enumerate}[label=(\alph*)]
+\item
+\begin{align*}
+\E{aX_1+b} &= a\E{X_1} + b \\
+           &= a\mu + b \\
+           &= 0
+\end{align*}
+\begin{align*}
+\Var{aX_1+b} &= \E{(aX_1+b)^2} - (\E{aX_1+b})^2 \\
+             &= \E{a^2X_1^2 + abX_1 + b^2} \\
+             &= a^2\E{X_1^2} + ab\E{X_1} + b^2 \\
+             &= a^2(\Var{X_1}+(\E{X_1})^2) + ab\mu + b^2 \\
+             &= a^2(\sigma^2 + \mu^2) + ab\mu + b^2 \\
+             &= a^2\sigma^2 + a^2\mu^2 + ab\mu + b^2 \\
+             &= a^2\sigma^2 + (a\mu + b)^2 \\
+             &= a^2\sigma^2 \\
+             &= 1
+\end{align*}
+\[
+\Rightarrow a = \pm \frac{1}{\sigma}, \quad b = \mp \frac{\mu}{\sigma}
 \]
+
+\item
+Let $Z = aX_1 + b \sim \mathcal{N}(0, 1)$. The pdf of $Z$: $\phi(z) = \frac{1}{\sqrt{2\pi}} e^{-z^2/2}$.
+\begin{align*}
+\E{\abs{aX_1 + b}} &= \E{\abs{Z}} \\
+                   &= \int_{-\infty}^{\infty} \abs{z} \frac{1}{\sqrt{2\pi}} e^{-z^2/2} \dd z \\
+                   &= 2 \int_{0}^{\infty} z \frac{1}{\sqrt{2\pi}} e^{-z^2/2} \dd z \\
+                   &= \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} z e^{-z^2/2} \dd z
+\end{align*}
+Let $u = \frac{z^2}{2}$ $\Rightarrow \dd u = z \dd z$:
+\begin{align*}
+\sqrt{\frac{2}{\pi}} \int_{0}^{\infty} e^{-u} \dd u &= \sqrt{\frac{2}{\pi}} \squarebrack{-e^{-u}}_0^\infty \\
+                                                    &= \sqrt{\frac{2}{\pi}} (0 - (-1)) \\
+                                                    &= \sqrt{\frac{2}{\pi}}
+\end{align*}
+\item
+\begin{align*}
+\E{X_1 + 2X_2} &= \E{X_1} + 2\E{X_2} \\
+               &= \mu + 2\mu \\
+               &= 3\mu \\
+\Var{X_1+2X_2} &= \E{(X_1+2X_2)^2} - (\E{X_1 + 2X_2})^2 \\
+               &= \E{X_1^2 + 4X_1X_2 + 4X_2^2} - (3\mu)^2 \\
+               &= \E{X_1^2} + 4\E{X_1}\E{X_2} + 4\E{X_2^2} - 9\mu^2 \\
+               &= (\sigma^2 + \mu^2) + 4\mu^2 +4(\sigma_2 + \mu^2) - 9\mu^2 \\
+               &= 5\sigma^2
+\end{align*}
+
+\item
+\begin{align*}
+\E{\sqrt{n}(\hat{\mu}_n - \mu)} &= \sqrt{n}(\E{\hat{\mu}_n} - \mu) \\
+    &= \sqrt{n}\left(\E{\frac{1}{n}\sum_{i=1}^{n}X_i} - \mu\right) \\
+    &= \sqrt{n}\left(\frac{1}{n}\sum_{i=1}^{n}\E{X_i} - \mu\right) \\
+    &= \sqrt{n}\left(\frac{1}{n} \cdot n\mu - \mu\right) \\
+    &= \sqrt{n}(\mu - \mu) = 0
+\end{align*}
+\begin{align*}
+\Var{\sqrt{n}(\hat{\mu}_n - \mu)} &= n \Var{\hat{\mu}_n} \\
+    &= n \Var{\frac{1}{n}\sum_{i=1}^{n}X_i} \\
+    &= n \cdot \frac{1}{n^2}\sum_{i=1}^{n}\Var{X_i} \\
+    &= \frac{1}{n} \cdot n\sigma^2 = \sigma^2
+\end{align*}
+\end{enumerate}
+
+% ---------------------
+
+\subsection*{A4.}
+\begin{enumerate}[label=(\alph*)]
+\item
+\[
+\begin{bmatrix} 0 & 1 & -1 & -2 \\ 1 & 1 & 1 & 1 \\ 1 & -1 & 1 & 2 \end{bmatrix}
+\begin{bmatrix} -1 & 2 & 0 \\ -2 & 1 & 2 \\ 2 & 0 & -3 \\ -1 & -1 & 2 \end{bmatrix}
+=
+\begin{bmatrix} -2 & 3 & 1 \\ -2 & 2 & 1 \\ 1 & -1 & -1 \end{bmatrix}
+\]
+
+\item
+$\operatorname{rank}(AB) = 3$ (AB has 3 non-zero, independence rows).
+
+Since $\operatorname{rank}(AB) \leq \min(\operatorname{rank}(A), \operatorname{rank}(B))$,
+and $\operatorname{rank}(A) \leq \min(3,4) = 3$, $\operatorname{rank}(B) \leq \min(4,3) = 3$, \\
+we have $\operatorname{rank}(A) = \operatorname{rank}(B) = 3$.
+
+\item
+$AB$ is invertible $\Rightarrow C = (AB)^{-1}$
+\begin{align*}
+\det(AB) &= (-2)\begin{vmatrix} 2 & 1 \\ -1 & -1 \end{vmatrix}
+- 3\begin{vmatrix} -2 & 1 \\ 1 & -1 \end{vmatrix}
++ 1\begin{vmatrix} -2 & 2 \\ 1 & -1 \end{vmatrix} \\
+&= (-2)(-2+1) - 3(2-1) + 1(2-2) \\
+&= 2 - 3 + 0 = -1
+\end{align*}
+\[
+\operatorname{adj}(AB) = \begin{bmatrix} -1 & -1 & 0 \\ 2 & 1 & 1 \\ 1 & 0 & 2 \end{bmatrix}^\top
+= \begin{bmatrix} -1 & 2 & 1 \\ -1 & 1 & 0 \\ 0 & 1 & 2 \end{bmatrix}
+\]
+\[
+C = \frac{1}{\det(AB)} \operatorname{adj}(AB)
+= -1 \cdot \begin{bmatrix} -1 & 2 & 1 \\ -1 & 1 & 0 \\ 0 & 1 & 2 \end{bmatrix}
+= \begin{bmatrix} 1 & -2 & -1 \\ 1 & -1 & 0 \\ 0 & -1 & -2 \end{bmatrix}
+\]
+
+\item
+\[
+x = (AB)^{-1}b = Cb
+= \begin{bmatrix} 1 & -2 & -1 \\ 1 & -1 & 0 \\ 0 & -1 & -2 \end{bmatrix}
+\begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}
+= \begin{bmatrix} -2 \\ 0 \\ -3 \end{bmatrix}
+\]
+\end{enumerate}
+
+
+% ---------------------
+
+\subsection*{A5.}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+\[
+f(x, y) = \sum_{i=1}^{n}\sum_{j=1}^{n} x_i A_{i,j} x_j + \sum_{i=1}^{n}\sum_{j=1}^{n} y_i B_{i,j} x_j + c
+\]
+
+\item
+\begin{align*}
+\frac{\partial f(x, y)}{\partial x_k} &= \sum_{j=1}^{n} A_{k,j} x_j + \sum_{i=1}^{n} A_{i,k} x_i + \sum_{i=1}^{n} B_{i,k} y_i \\
+\frac{\partial f(x, y)}{\partial y_k} &= \sum_{j=1}^{n} B_{k,j} x_j
+\end{align*}
+
+\item
+\begin{align*}
+\nabla_x f(x, y) &= (A + A^\top)x + B^\top y \\
+\nabla_y f(x, y) &= Bx
+\end{align*}
+
+\end{enumerate}
+
+% ---------------------
+
+\subsection*{A6.}
+
+\begin{enumerate}[label=(\alph*)]
+\item
+\begin{align*}
+& \begin{bmatrix} v_1 & 0 & 0 \\ 0 & v_2 & 0 \\ 0 & 0 & v_3 \end{bmatrix}^{-1} = \begin{bmatrix} w_1 & 0 & 0 \\ 0 & w_2 & 0 \\ 0 & 0 & w_3 \end{bmatrix} \\
+& \Rightarrow \begin{bmatrix} w_1 \\ w_2 \\ w_3 \end{bmatrix} = \begin{bmatrix} 1/v_1 \\ 1/v_2 \\ 1/v_3 \end{bmatrix} \\
+& \Rightarrow g(v_i) = \frac{1}{v_i}
+\end{align*}
+
+\item
+\begin{align*}
+\|Ax\|_2^2 &= (Ax)^\top (Ax) \\
+           &= x^\top A^\top A x \\
+           &= x^\top I x \\
+           &= \|x\|_2^2
+\end{align*}
+
+\item
+Since $B$ is symmetric, $B = B^\top$. We want to show $(B^{-1})^\top = B^{-1}$.
+\begin{align*}
+BB^{-1} &= I \\
+(BB^{-1})^\top &= I^\top \\
+(B^{-1})^\top B^\top &= I \\
+(B^{-1})^\top B &= I \\
+(B^{-1})^\top &= B^{-1}
+\end{align*}
+
+\item
+Let $\lambda$ be an eigenvalue of $C$, $\exists v \neq 0$ such that $Cv = \lambda v$.
+\begin{align*}
+v^\top Cv &= v^\top (\lambda v) \\
+          &= \lambda v^\top v \\
+          &= \lambda \|v\|_2^2
+\end{align*}
+Since $C$ is positive semi-definite, $v^\top Cv \geq 0$. Since $v \neq 0$, $\|v\|_2^2 > 0$.
+\[
+\therefore \lambda = \frac{v^\top Cv}{\|v\|_2^2} \geq 0
+\]
+
+\end{enumerate}
+
+% ---------------------
+
+\subsection*{A7.}
+
+Part c:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{hw0-A/homeworks/vanilla_vs_numpy/vanilla_vs_numpy.png}
+    \caption{Vanilla vs NumPy}
+    \label{fig:vanilla_vs_numpy}
+\end{figure}
+
+I think the reason for this difference is that the vanilla version uses for-loops, while NumPy is optimized for vectorized operations.
+
+% ---------------------
+
+\subsection*{A8.}
+
+Part a and b:
+$n = 40,000$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{hw0-A/homeworks/clt_with_cdfs/Figure_1.png}
+    \caption{Empirical CDF for $k \in \{1, 8, 64, 512\}$.}
+    \label{fig:clt_cdfs}
+\end{figure}
+
+As $k$ increases, the empirical CDF of $Y^{(k)}$ converges toward the CDF of the standard normal distribution, which is consistent with the Central Limit Theorem.
 
 % ------ setting ------
 
