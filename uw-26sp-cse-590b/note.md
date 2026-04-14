@@ -81,3 +81,30 @@ If that leads to a conflict, it backtracks and tries the opposite value.
 This class walk through the process below:
 
 Any formula (Propositional Logic) -> NNF -> Tseitin -> CNF -> DPLL/SAT solver -> Find a model or prove it's UNSAT
+
+# Week 2 - 2026.04.07
+
+## [Practice](https://courses.cs.washington.edu/courses/csep590b/26sp/lecture/l02/01-practice/)
+
+webapp -> (django AND analytics AND numpy)  
+=> (webapp -> django) AND (webapp -> analytics) AND (webapp -> numpy)
+
+analytics -> (postgres OR mysql)
+
+conflict part => NOT(postgres AND mysql)
+
+The Pigeonhole Problem:  
+It's trivial to human, but it's way too complicate to solver
+
+## [Theory](https://courses.cs.washington.edu/courses/csep590b/26sp/lecture/l02/02-theory/)
+
+Three Problems with DPLL
+1. No Learning - it might hits same conflict again.
+2. Chronological Backtracking - it not know which step is causing this conflict.
+3. Naive Decisions - Choose variables without any strategy.
+
+The CDCL Algorithm improve problems mentioned above.
+1. No Leaning -> CDCL uses first UIP to learn clause
+2. Chronological Backtracking -> CDCL uses AnalyzeConflict calculating backtrack level
+3. Naive decisions -> CDCL uses Decision Heuristics like VSIDS
+
