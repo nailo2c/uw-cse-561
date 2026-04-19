@@ -1,0 +1,46 @@
+# Default configuration for nanoGPT-JAX
+
+model:
+  seqlen: 2048
+  vocab_size: 50304
+  d_emb: 1536
+  mlp_hidden_dim: 6144
+  num_layers: 24
+  q_heads: 12
+  kv_heads: 12
+  attn_impl: flash_attn    # "flash_attn" or "xla"
+  activation_checkpointing: true
+  dtype: bfloat16
+
+hparams:
+  # Schedule
+  total_train_steps: 10000
+  warmup_steps: 300
+  micro_batch_size: 16
+  global_batch_size: 64
+
+  # Optimizer
+  max_lr: 6.0e-4
+  min_lr: 6.0e-5
+  embedding_lr: 0.2
+  unembedding_lr: 0.004
+  b1: 0.9
+  b2: 0.95
+  weight_decay: 0.01
+  cautious_weight_decay: 0.0
+  clip_grad_norm: 1.0
+
+checkpoint:
+  max_checkpoints_to_keep: 5
+  checkpoint_save_steps: 200
+  last_checkpoint_step: 0
+  save_ckpt_dir: "checkpoints/default"
+  load_params_ckpt_path: "checkpoints/default/0/params"
+
+profile:
+  enabled: true
+  profile_dir: "profiles/"
+  start_step: 5          # skip first steps (compilation warmup)
+  end_step: 10
+
+data_dir: "nanogpt/fineweb10B/"
