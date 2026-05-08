@@ -108,3 +108,5 @@ The CDCL Algorithm improve problems mentioned above.
 2. Chronological Backtracking -> CDCL uses AnalyzeConflict calculating backtrack level
 3. Naive decisions -> CDCL uses Decision Heuristics like VSIDS
 
+# Week 3 - 2026.04.14
+
