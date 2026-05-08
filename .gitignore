@@ -2,6 +2,23 @@
 .DS_Store
 Thumbs.db
 
+# Python cache and tooling
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Python environments
+.venv/
+venv/
+env/
+
 # LaTeX auxiliary files
 *.aux
 *.log
@@ -17,3 +34,7 @@ Thumbs.db
 *.nav
 *.snm
 *.vrb
+
+# Coursework submission output
+submission_*.zip
+tmp_submission_dir/
