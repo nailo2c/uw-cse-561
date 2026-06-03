@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="518" viewBox="0 0 768 518">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#202124}.title{font-size:18px;font-weight:700}.axis{font-size:13px}.tick{font-size:12px}.cell{font-size:12px;font-weight:700}.small{font-size:11px}</style>
+<text class="title" x="384.0" y="28" text-anchor="middle">Q3 Optimized Fused MLP TFLOPs Heatmap</text>
+<text class="axis" x="348.0" y="58" text-anchor="middle">BH</text>
+<text class="axis" x="22" y="272.0" text-anchor="middle" transform="rotate(-90 22 272.0)">BM</text>
+<text class="tick" x="140.0" y="80" text-anchor="middle">128</text>
+<text class="tick" x="244.0" y="80" text-anchor="middle">256</text>
+<text class="tick" x="348.0" y="80" text-anchor="middle">512</text>
+<text class="tick" x="452.0" y="80" text-anchor="middle">1024</text>
+<text class="tick" x="556.0" y="80" text-anchor="middle">2048</text>
+<text class="tick" x="74" y="122.0" text-anchor="end">8</text>
+<text class="tick" x="74" y="166.0" text-anchor="end">16</text>
+<text class="tick" x="74" y="210.0" text-anchor="end">32</text>
+<text class="tick" x="74" y="254.0" text-anchor="end">64</text>
+<text class="tick" x="74" y="298.0" text-anchor="end">128</text>
+<text class="tick" x="74" y="342.0" text-anchor="end">256</text>
+<text class="tick" x="74" y="386.0" text-anchor="end">512</text>
+<text class="tick" x="74" y="430.0" text-anchor="end">1024</text>
+<rect x="88" y="96" width="104" height="44" fill="#313795" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="140.0" y="122.0" text-anchor="middle" fill="#ffffff">5.6</text>
+<rect x="192" y="96" width="104" height="44" fill="#313795" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="244.0" y="122.0" text-anchor="middle" fill="#ffffff">5.8</text>
+<rect x="296" y="96" width="104" height="44" fill="#313895" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="348.0" y="122.0" text-anchor="middle" fill="#ffffff">6.0</text>
+<rect x="400" y="96" width="104" height="44" fill="#313895" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="452.0" y="122.0" text-anchor="middle" fill="#ffffff">6.0</text>
+<rect x="504" y="96" width="104" height="44" fill="#313695" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="556.0" y="122.0" text-anchor="middle" fill="#ffffff">4.8</text>
+<rect x="88" y="140" width="104" height="44" fill="#333f96" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="140.0" y="166.0" text-anchor="middle" fill="#ffffff">10.8</text>
+<rect x="192" y="140" width="104" height="44" fill="#334097" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="244.0" y="166.0" text-anchor="middle" fill="#ffffff">11.4</text>
+<rect x="296" y="140" width="104" height="44" fill="#334097" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="348.0" y="166.0" text-anchor="middle" fill="#ffffff">11.8</text>
+<rect x="400" y="140" width="104" height="44" fill="#334097" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="452.0" y="166.0" text-anchor="middle" fill="#ffffff">11.9</text>
+<rect x="504" y="140" width="104" height="44" fill="#323d96" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="556.0" y="166.0" text-anchor="middle" fill="#ffffff">9.5</text>
+<rect x="88" y="184" width="104" height="44" fill="#354e99" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="140.0" y="210.0" text-anchor="middle" fill="#ffffff">21.2</text>
+<rect x="192" y="184" width="104" height="44" fill="#355199" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="244.0" y="210.0" text-anchor="middle" fill="#ffffff">22.7</text>
+<rect x="296" y="184" width="104" height="44" fill="#365299" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="348.0" y="210.0" text-anchor="middle" fill="#ffffff">23.5</text>
+<rect x="400" y="184" width="104" height="44" fill="#365299" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="452.0" y="210.0" text-anchor="middle" fill="#ffffff">23.6</text>
+<rect x="504" y="184" width="104" height="44" fill="#344a98" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="556.0" y="210.0" text-anchor="middle" fill="#ffffff">18.6</text>
+<rect x="88" y="228" width="104" height="44" fill="#3a6b9d" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="140.0" y="254.0" text-anchor="middle" fill="#ffffff">40.4</text>
+<rect x="192" y="228" width="104" height="44" fill="#3b719e" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="244.0" y="254.0" text-anchor="middle" fill="#ffffff">44.4</text>
+<rect x="296" y="228" width="104" height="44" fill="#3b739f" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="348.0" y="254.0" text-anchor="middle" fill="#ffffff">45.8</text>
+<rect x="400" y="228" width="104" height="44" fill="#3b739f" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="452.0" y="254.0" text-anchor="middle" fill="#ffffff">46.3</text>
+<rect x="504" y="228" width="104" height="44" fill="#39639c" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="556.0" y="254.0" text-anchor="middle" fill="#ffffff">35.5</text>
+<rect x="88" y="272" width="104" height="44" fill="#429aa5" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="140.0" y="298.0" text-anchor="middle" fill="#ffffff">72.6</text>
+<rect x="192" y="272" width="104" height="44" fill="#45aba8" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="244.0" y="298.0" text-anchor="middle" fill="#ffffff">83.9</text>
+<rect x="296" y="272" width="104" height="44" fill="#45ada8" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="348.0" y="298.0" text-anchor="middle" fill="#ffffff">85.4</text>
+<rect x="400" y="272" width="104" height="44" fill="#4eb0a6" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="452.0" y="298.0" text-anchor="middle" fill="#ffffff">89.2</text>
+<rect x="504" y="272" width="104" height="44" fill="#3e85a2" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="556.0" y="298.0" text-anchor="middle" fill="#ffffff">58.5</text>
+<rect x="88" y="316" width="104" height="44" fill="#8fc695" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="140.0" y="342.0" text-anchor="middle" fill="#202124">117.3</text>
+<rect x="192" y="316" width="104" height="44" fill="#b9d48a" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="244.0" y="342.0" text-anchor="middle" fill="#202124">135.5</text>
+<rect x="296" y="316" width="104" height="44" fill="#e1e280" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="348.0" y="342.0" text-anchor="middle" fill="#202124">152.7</text>
+<rect x="400" y="316" width="104" height="44" fill="#f3e87b" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="452.0" y="342.0" text-anchor="middle" fill="#202124">160.5</text>
+<rect x="504" y="316" width="104" height="44" fill="#4aafa7" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="556.0" y="342.0" text-anchor="middle" fill="#ffffff">87.1</text>
+<rect x="88" y="360" width="104" height="44" fill="#d1dc84" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="140.0" y="386.0" text-anchor="middle" fill="#202124">145.7</text>
+<rect x="192" y="360" width="104" height="44" fill="#f8ea7a" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="244.0" y="386.0" text-anchor="middle" fill="#202124">162.4</text>
+<rect x="296" y="360" width="104" height="44" fill="#ffec78" stroke="#111111" stroke-width="2.5"/>
+<text class="cell" x="348.0" y="386.0" text-anchor="middle" fill="#202124">165.6</text>
+<rect x="400" y="360" width="104" height="44" fill="#f4e87b" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="452.0" y="386.0" text-anchor="middle" fill="#202124">161.0</text>
+<rect x="504" y="360" width="104" height="44" fill="#8ac496" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="556.0" y="386.0" text-anchor="middle" fill="#202124">114.9</text>
+<rect x="88" y="404" width="104" height="44" fill="#f5e97b" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="140.0" y="430.0" text-anchor="middle" fill="#202124">161.4</text>
+<rect x="192" y="404" width="104" height="44" fill="#d9d9d9" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="244.0" y="430.0" text-anchor="middle" fill="#202124">OOM</text>
+<rect x="296" y="404" width="104" height="44" fill="#d9d9d9" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="348.0" y="430.0" text-anchor="middle" fill="#202124">OOM</text>
+<rect x="400" y="404" width="104" height="44" fill="#bdd689" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="452.0" y="430.0" text-anchor="middle" fill="#202124">137.1</text>
+<rect x="504" y="404" width="104" height="44" fill="#d9d9d9" stroke="#ffffff" stroke-width="1"/>
+<text class="cell" x="556.0" y="430.0" text-anchor="middle" fill="#202124">OOM</text>
+<rect x="642" y="96.00" width="18" height="5.20" fill="#ffec78"/>
+<rect x="642" y="100.40" width="18" height="5.20" fill="#faea79"/>
+<rect x="642" y="104.80" width="18" height="5.20" fill="#f6e97a"/>
+<rect x="642" y="109.20" width="18" height="5.20" fill="#f1e77c"/>
+<rect x="642" y="113.60" width="18" height="5.20" fill="#ece67d"/>
+<rect x="642" y="118.00" width="18" height="5.20" fill="#e7e47e"/>
+<rect x="642" y="122.40" width="18" height="5.20" fill="#e3e27f"/>
+<rect x="642" y="126.80" width="18" height="5.20" fill="#dee181"/>
+<rect x="642" y="131.20" width="18" height="5.20" fill="#d9df82"/>
+<rect x="642" y="135.60" width="18" height="5.20" fill="#d5de83"/>
+<rect x="642" y="140.00" width="18" height="5.20" fill="#d0dc84"/>
+<rect x="642" y="144.40" width="18" height="5.20" fill="#cbda85"/>
+<rect x="642" y="148.80" width="18" height="5.20" fill="#c6d987"/>
+<rect x="642" y="153.20" width="18" height="5.20" fill="#c2d788"/>
+<rect x="642" y="157.60" width="18" height="5.20" fill="#bdd689"/>
+<rect x="642" y="162.00" width="18" height="5.20" fill="#b8d48a"/>
+<rect x="642" y="166.40" width="18" height="5.20" fill="#b4d28b"/>
+<rect x="642" y="170.80" width="18" height="5.20" fill="#afd18d"/>
+<rect x="642" y="175.20" width="18" height="5.20" fill="#aacf8e"/>
+<rect x="642" y="179.60" width="18" height="5.20" fill="#a6ce8f"/>
+<rect x="642" y="184.00" width="18" height="5.20" fill="#a1cc90"/>
+<rect x="642" y="188.40" width="18" height="5.20" fill="#9ccb92"/>
+<rect x="642" y="192.80" width="18" height="5.20" fill="#97c993"/>
+<rect x="642" y="197.20" width="18" height="5.20" fill="#93c794"/>
+<rect x="642" y="201.60" width="18" height="5.20" fill="#8ec695"/>
+<rect x="642" y="206.00" width="18" height="5.20" fill="#89c496"/>
+<rect x="642" y="210.40" width="18" height="5.20" fill="#85c398"/>
+<rect x="642" y="214.80" width="18" height="5.20" fill="#80c199"/>
+<rect x="642" y="219.20" width="18" height="5.20" fill="#7bbf9a"/>
+<rect x="642" y="223.60" width="18" height="5.20" fill="#76be9b"/>
+<rect x="642" y="228.00" width="18" height="5.20" fill="#72bc9c"/>
+<rect x="642" y="232.40" width="18" height="5.20" fill="#6dbb9e"/>
+<rect x="642" y="236.80" width="18" height="5.20" fill="#68b99f"/>
+<rect x="642" y="241.20" width="18" height="5.20" fill="#64b7a0"/>
+<rect x="642" y="245.60" width="18" height="5.20" fill="#5fb6a1"/>
+<rect x="642" y="250.00" width="18" height="5.20" fill="#5ab4a3"/>
+<rect x="642" y="254.40" width="18" height="5.20" fill="#55b3a4"/>
+<rect x="642" y="258.80" width="18" height="5.20" fill="#51b1a5"/>
+<rect x="642" y="263.20" width="18" height="5.20" fill="#4cafa6"/>
+<rect x="642" y="267.60" width="18" height="5.20" fill="#47aea7"/>
+<rect x="642" y="272.00" width="18" height="5.20" fill="#45aba8"/>
+<rect x="642" y="276.40" width="18" height="5.20" fill="#44a8a7"/>
+<rect x="642" y="280.80" width="18" height="5.20" fill="#44a5a7"/>
+<rect x="642" y="285.20" width="18" height="5.20" fill="#43a2a6"/>
+<rect x="642" y="289.60" width="18" height="5.20" fill="#439fa6"/>
+<rect x="642" y="294.00" width="18" height="5.20" fill="#429ca5"/>
+<rect x="642" y="298.40" width="18" height="5.20" fill="#4299a5"/>
+<rect x="642" y="302.80" width="18" height="5.20" fill="#4196a4"/>
+<rect x="642" y="307.20" width="18" height="5.20" fill="#4193a4"/>
+<rect x="642" y="311.60" width="18" height="5.20" fill="#4090a3"/>
+<rect x="642" y="316.00" width="18" height="5.20" fill="#408da3"/>
+<rect x="642" y="320.40" width="18" height="5.20" fill="#3f8aa2"/>
+<rect x="642" y="324.80" width="18" height="5.20" fill="#3f87a2"/>
+<rect x="642" y="329.20" width="18" height="5.20" fill="#3e84a2"/>
+<rect x="642" y="333.60" width="18" height="5.20" fill="#3e81a1"/>
+<rect x="642" y="338.00" width="18" height="5.20" fill="#3d7ea1"/>
+<rect x="642" y="342.40" width="18" height="5.20" fill="#3d7ba0"/>
+<rect x="642" y="346.80" width="18" height="5.20" fill="#3c78a0"/>
+<rect x="642" y="351.20" width="18" height="5.20" fill="#3c759f"/>
+<rect x="642" y="355.60" width="18" height="5.20" fill="#3b729f"/>
+<rect x="642" y="360.00" width="18" height="5.20" fill="#3b6f9e"/>
+<rect x="642" y="364.40" width="18" height="5.20" fill="#3a6c9e"/>
+<rect x="642" y="368.80" width="18" height="5.20" fill="#3a699d"/>
+<rect x="642" y="373.20" width="18" height="5.20" fill="#39669d"/>
+<rect x="642" y="377.60" width="18" height="5.20" fill="#39639c"/>
+<rect x="642" y="382.00" width="18" height="5.20" fill="#38609c"/>
+<rect x="642" y="386.40" width="18" height="5.20" fill="#385d9b"/>
+<rect x="642" y="390.80" width="18" height="5.20" fill="#375a9b"/>
+<rect x="642" y="395.20" width="18" height="5.20" fill="#37579a"/>
+<rect x="642" y="399.60" width="18" height="5.20" fill="#36549a"/>
+<rect x="642" y="404.00" width="18" height="5.20" fill="#365199"/>
+<rect x="642" y="408.40" width="18" height="5.20" fill="#354e99"/>
+<rect x="642" y="412.80" width="18" height="5.20" fill="#354b98"/>
+<rect x="642" y="417.20" width="18" height="5.20" fill="#344898"/>
+<rect x="642" y="421.60" width="18" height="5.20" fill="#344597"/>
+<rect x="642" y="426.00" width="18" height="5.20" fill="#334297"/>
+<rect x="642" y="430.40" width="18" height="5.20" fill="#333f96"/>
+<rect x="642" y="434.80" width="18" height="5.20" fill="#323c96"/>
+<rect x="642" y="439.20" width="18" height="5.20" fill="#323995"/>
+<rect x="642" y="443.60" width="18" height="5.20" fill="#313695"/>
+<rect x="642" y="96" width="18" height="352" fill="none" stroke="#555" stroke-width="1"/>
+<text class="small" x="670" y="100" dominant-baseline="hanging">165.6</text>
+<text class="small" x="670" y="448" dominant-baseline="ideographic">4.8</text>
+<text class="small" x="642" y="468">TFLOPs</text>
+<text class="small" x="88" y="496">Best: BM=512, BH=512, 165.59 TFLOPs</text>
+</svg>

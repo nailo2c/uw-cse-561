@@ -1,0 +1,5 @@
+# View Section 2 traces with XProf:
+xprof --port 8791 "/Users/aaron.chen/Workspace/github/uw-cse-coursework/uw-26sp-cse-systems-for-machine-learning/590a-assignment3/20260524-222509/silu_traces"
+
+# Then open:
+# http://localhost:8791/
