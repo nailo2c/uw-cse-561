@@ -1,0 +1,49 @@
+[project]
+name = "csep546-hw4"
+version = "0.0.1"
+description = "CSEP 546 HW4 k-means starter code"
+authors = [
+    {name = "CSEP 546 Staff"}
+]
+requires-python = ">=3.9"
+dependencies = [
+    "matplotlib",
+    "numpy",
+    "invoke",
+    "gradescope-utils==0.4.0",
+]
+
+[dependency-groups]
+dev = [
+    "black",
+    "flake8",
+    "isort",
+    "mypy",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["utils"]
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = "3.9"
+
+[[tool.mypy.overrides]]
+module = [
+    "numpy",
+    "sklearn.*",
+    "matplotlib.*",
+    "tqdm",
+    "torchvision.*",
+    "losses.*",
+    "layers.*",
+    "optimizers.*",
+    "train.*"
+]
+ignore_missing_imports = true
