@@ -1,0 +1,192 @@
+# Companies to scan, grouped by ATS provider.
+# Slug = the company identifier in the provider's URL/API.
+# Add or remove freely — keep the slug accurate to the provider's URL.
+#
+# Quick probe before adding:
+#   greenhouse: curl -sI https://boards-api.greenhouse.io/v1/boards/<slug>/jobs
+#   lever:      curl -sI https://api.lever.co/v0/postings/<slug>?mode=json
+#   ashby:      curl -sI https://api.ashbyhq.com/posting-api/job-board/<slug>
+
+greenhouse:
+  - slug: anthropic
+    name: Anthropic
+  - slug: databricks
+    name: Databricks
+  - slug: stripe
+    name: Stripe
+  - slug: airbnb
+    name: Airbnb
+  - slug: pinterest
+    name: Pinterest
+  - slug: instacart
+    name: Instacart
+  - slug: scaleai
+    name: Scale AI
+  - slug: figma
+    name: Figma
+  - slug: brex
+    name: Brex
+
+lever:
+  - slug: mistral
+    name: Mistral AI
+
+ashby:
+  - slug: openai
+    name: OpenAI
+  - slug: cohere
+    name: Cohere
+  - slug: notion
+    name: Notion
+  - slug: elevenlabs
+    name: ElevenLabs
+  - slug: ramp
+    name: Ramp
+
+# Workday-hosted (FAANG-tier reachable via the CXS JSON API).
+# Each entry needs three fields because tenant != host isn't derivable:
+#   host:   subdomain.{wd-region}.myworkdayjobs.com  (region varies per company)
+#   tenant: the path segment after /wday/cxs/
+#   site:   the public site name
+# Verify with:
+#   curl -X POST https://{host}/wday/cxs/{tenant}/{site}/jobs \
+#        -H 'Content-Type: application/json' -d '{"limit":1,"offset":0}'
+workday:
+  - slug: nvidia
+    name: NVIDIA
+    host: nvidia.wd5.myworkdayjobs.com
+    tenant: nvidia
+    site: NVIDIAExternalCareerSite
+    search_term: software engineer
+    title_include: [software, developer, development, firmware, platform, infrastructure, cloud, networking, hpc, ai, ml, systems, dpu, doca, cuda, data, devops]
+    title_exclude: [intern, internship, student, mechanical, electrical, facilities, sales, marketing]
+  - slug: salesforce
+    name: Salesforce
+    host: salesforce.wd12.myworkdayjobs.com
+    tenant: salesforce
+    site: External_Career_Site
+    search_term: software engineer
+    title_include: [software, developer, full stack, backend, frontend, platform, infrastructure, cloud, data, ai, ml, machine learning, devops, security, site reliability, sre, slack, engineering mts, technical staff]
+    title_exclude: [product manager, account executive, solution engineer, success architecture, customer success, quality assurance, salesforce exp mandatory, sales, marketing]
+  - slug: intel
+    name: Intel
+    host: intel.wd1.myworkdayjobs.com
+    tenant: intel
+    site: External
+    search_term: software engineer
+    title_include: [software, developer, development, firmware, python, automation, ai, ml, machine learning, framework, vllm, algorithm, systems, validation tools, data]
+    title_exclude: [intern, internship, student, sales, marketing]
+
+# Amazon Jobs custom API. Single endpoint, no per-company config.
+amazon:
+  - slug: amazon
+    name: Amazon
+    search_term: software engineer
+    country_codes: [USA]
+    title_include: [software, engineer, developer, architect, data, ai, ml, cloud, systems]
+    title_exclude: [product manager, program manager, pharmacy, financial, marketing, sales, recruiter, mechanical, electrical, technician]
+    location_include: ["US,"]
+
+# Mag-7 company-specific providers.
+# These are intentionally limited to software/ML-ish search terms so the
+# downstream skill extractor sees role descriptions relevant to the project.
+apple:
+  - slug: apple
+    name: Apple
+    search_terms:
+      - siri
+      - machine learning
+      - software platform
+      - cloud
+      - security engineer
+    title_include:
+      - developer
+      - scientist
+      - architect
+      - machine learning
+      - ml
+      - ai
+      - siri
+      - software
+      - platform
+      - security
+      - data
+      - search
+      - evaluation
+    title_exclude:
+      - product manager
+      - program manager
+      - sales
+      - marketing
+      - recruiter
+      - mechanical
+      - electrical
+    location_include:
+      - united states
+      - usa
+      - california
+      - seattle
+      - cupertino
+      - remote
+    max_pages: 3
+
+google:
+  - slug: google
+    name: Google
+    search_term: software engineer
+    location: United States
+    title_include: [software, developer, development, site reliability, sre, production engineer, machine learning, ai, ml, data engineer, cloud, infrastructure, platform, systems software, firmware, embedded systems, security]
+    title_exclude: [technician, product manager, program manager, sales, recruiter, customer, rtl design, hardware design]
+
+microsoft:
+  - slug: microsoft
+    name: Microsoft
+    search_term: software engineer
+    location: United States
+    title_include: [software, site reliability, sre, service engineer, ai, robot learning, perception, navigation, spatial ai, simulation, cloud, data, security, infrastructure, platform, systems]
+    title_exclude: [hardware systems, signoff cad, cad engineer, product manager, program manager, mechanical, electrical, sales, marketing, recruiter]
+
+meta:
+  - slug: meta
+    name: Meta
+    search_term: software engineer
+    offices: [North America]
+    title_include: [software, production engineer, data engineer, research engineer, research scientist, machine learning, ai, ml, infrastructure, platform, systems ml, hw/sw, network engineer]
+    title_exclude: [mechanical, electrical, critical facility, robotics hardware, verification & validation, system safety, product manager, program manager, sales, marketing, recruiter]
+
+# JobSpy aggregator fallback. Tesla's direct HTTP endpoint is Akamai-protected,
+# so Tesla is enabled through LinkedIn to complete Mag-7 coverage. This has ToS
+# implications and aggressive rate-limit at ~10 pages without proxy. Comment
+# out this section if you do not want to use LinkedIn scraping.
+#
+# Find linkedin_company_ids by visiting linkedin.com/company/<name> — the
+# numeric ID appears in the page source as company.entityUrn.
+#
+jobspy:
+  - slug: tesla-linkedin
+    name: Tesla
+    sites: [linkedin]
+    search_term: software engineer
+    linkedin_company_ids: [15564]
+    location: United States
+#
+# Optional fallback examples for other Mag-7 companies if their direct
+# company-specific providers break:
+#   - slug: apple-linkedin
+#     name: Apple
+#     sites: [linkedin]
+#     search_term: software engineer
+#     linkedin_company_ids: [162479]
+#     location: United States
+#   - slug: google-linkedin
+#     name: Google
+#     sites: [linkedin]
+#     search_term: software engineer
+#     linkedin_company_ids: [1441]
+#     location: United States
+#   - slug: meta-linkedin
+#     name: Meta
+#     sites: [linkedin]
+#     search_term: software engineer
+#     linkedin_company_ids: [10667]
+#     location: United States

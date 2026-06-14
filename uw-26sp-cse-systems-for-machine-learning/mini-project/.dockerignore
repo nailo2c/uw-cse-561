@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.local
+data/postings/*.csv
+data/extractions/*.csv
+data/metrics/*.jsonl
+data/reports/*.md
+.git
+.idea
+.vscode

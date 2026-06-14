@@ -1,0 +1,45 @@
+# docker compose for skilltrend.
+#
+# All services share one image and one mounted ./data volume — this is the
+# "single VM, everything in one place" layout described in the README. To
+# scale storage out later, replace the `data` bind mount with a managed
+# volume or pointed at a Postgres container.
+
+x-base: &base
+  build:
+    context: .
+    dockerfile: Dockerfile
+  image: skilltrend:latest
+  env_file: .env
+  volumes:
+    - ./data:/app/data
+    - ./config:/app/config
+
+services:
+  scan:
+    <<: *base
+    profiles: ["cli"]
+    command: ["skilltrend", "scan"]
+
+  extract:
+    <<: *base
+    profiles: ["cli"]
+    command: ["skilltrend", "extract", "--mode", "concurrent"]
+
+  trend:
+    <<: *base
+    profiles: ["cli"]
+    command: ["skilltrend", "trend", "--window", "30", "--baseline", "90"]
+
+  tui:
+    <<: *base
+    profiles: ["interactive"]
+    stdin_open: true
+    tty: true
+    command: ["skilltrend", "tui"]
+
+  web:
+    <<: *base
+    ports:
+      - "8501:8501"
+    command: ["skilltrend", "web", "--port", "8501", "--host", "0.0.0.0"]

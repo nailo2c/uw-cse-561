@@ -1,0 +1,24 @@
+---
+title: "skilltrend: Characterizing an Agentic LLM Pipeline for Job-Market Skill-Demand Analysis"
+author: "Aaron Chen (aaronyc), UW CSE Systems for ML"
+date: "Spring 2026"
+documentclass: article
+fontsize: 10pt
+classoption:
+  - twocolumn
+geometry:
+  - letterpaper
+  - margin=0.75in
+header-includes:
+  - \usepackage{microtype}
+  - \usepackage{booktabs}
+  - \usepackage{graphicx}
+  - \usepackage{float}
+  - \usepackage[font=small,labelfont=bf]{caption}
+  - \setlength{\columnsep}{0.24in}
+  - \setlength{\parindent}{1em}
+  - \setlength{\parskip}{0pt}
+  - \setlength{\textfloatsep}{7pt plus 2pt minus 2pt}
+  - \setlength{\floatsep}{6pt plus 2pt minus 2pt}
+  - \setlength{\intextsep}{6pt plus 2pt minus 2pt}
+---

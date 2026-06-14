@@ -1,0 +1,156 @@
+# Skill -> category map. Skills not listed here fall into "Uncategorized".
+#
+# Categories are intentionally coarse (~8) to keep the trend story
+# narratable. Add skills freely; if a skill could live in two categories,
+# pick the one that matches how job postings typically frame it (e.g.
+# CUDA is technically a hardware API but JDs always pair it with PyTorch).
+
+Languages:
+  - Python
+  - Go
+  - Rust
+  - JavaScript
+  - TypeScript
+  - C
+  - C++
+  - C#
+  - Java
+  - Scala
+  - Perl
+  - Ruby
+  - PHP
+  - Kotlin
+  - Swift
+  - Objective-C
+  - R
+  - MATLAB
+  - Bash
+  - Shell
+
+AI/ML Frameworks:
+  - PyTorch
+  - TensorFlow
+  - JAX
+  - CUDA
+  - Triton
+  - scikit-learn
+  - pandas
+  - NumPy
+  - HuggingFace
+  - Keras
+  - XGBoost
+  - LightGBM
+  - OpenCV
+  - ONNX
+  - TensorRT
+
+LLM / Agentic Stack:
+  - LangChain
+  - LangGraph
+  - LlamaIndex
+  - vLLM
+  - RAG
+  - Prompt engineering
+  - Fine-tuning
+  - RLHF
+  - Inference optimization
+  - Distributed training
+  - LLM evaluation
+  - LLM observability
+  - Agentic workflows
+  - Model Context Protocol
+  - Claude
+  - Claude Code
+  - Claude API
+  - Cursor
+  - GPT
+  - Gemini
+  - DSPy
+  - MLflow
+  - Pinecone
+  - Weights & Biases
+  - GenAI
+
+Cloud & Infrastructure:
+  - AWS
+  - GCP
+  - Azure
+  - Kubernetes
+  - Docker
+  - Terraform
+  - Linux
+  - Ansible
+  - Helm
+  - gRPC
+  - Pulumi
+  - Nomad
+  - Consul
+  - Vault
+
+Data & Analytics:
+  - Spark
+  - Hadoop
+  - Snowflake
+  - BigQuery
+  - Databricks
+  - Airflow
+  - dbt
+  - Kafka
+  - SQL
+  - Tableau
+  - Looker
+  - Excel
+  - Hex
+  - Power BI
+  - Delta Lake
+  - Lakehouse
+  - Prefect
+  - Dagster
+
+Web & Frontend:
+  - React
+  - Vue
+  - Angular
+  - Next.js
+  - Svelte
+  - FastAPI
+  - Flask
+  - Django
+  - Node.js
+  - Express
+  - GraphQL
+  - REST
+  - HTML
+  - CSS
+  - Tailwind
+  - Webpack
+  - Vite
+
+Databases:
+  - PostgreSQL
+  - MySQL
+  - MongoDB
+  - Cassandra
+  - DynamoDB
+  - SQLite
+  - Redis
+  - Elasticsearch
+  - Neo4j
+  - ClickHouse
+  - Memcached
+
+Tools & Business Apps:
+  - Git
+  - GitHub
+  - GitLab
+  - Jira
+  - Confluence
+  - Figma
+  - Notion
+  - Slack
+  - Salesforce
+  - NetSuite
+  - HubSpot
+  - Sage
+  - QuickBooks
+  - Xero

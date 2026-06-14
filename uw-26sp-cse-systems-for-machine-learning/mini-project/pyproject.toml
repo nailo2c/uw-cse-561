@@ -1,0 +1,36 @@
+[project]
+name = "skilltrend"
+version = "0.1.0"
+description = "Agentic skill-demand trend analyzer for the job market"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "typer>=0.12",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "httpx>=0.27",
+    "openai>=1.40",
+    "pyyaml>=6.0",
+    "rich>=13.7",
+    "textual>=0.70",
+    "streamlit>=1.36",
+    "pandas>=2.2",
+    "python-dateutil>=2.9",
+    "beautifulsoup4>=4.12",
+    "tenacity>=8.5",
+    "python-jobspy>=1.1",
+]
+
+[project.scripts]
+skilltrend = "skilltrend.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/skilltrend"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
